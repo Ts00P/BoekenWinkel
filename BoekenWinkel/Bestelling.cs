@@ -12,6 +12,7 @@ namespace BoekenWinkel
         private bool afgehandeld;
         private List<Product> BestellingLijst;
 
+
         public Bestelling(DateTime bestelDatum, bool afgehandeld, List<Product> bestellingLijst)
         {
             this.bestelDatum = bestelDatum;
