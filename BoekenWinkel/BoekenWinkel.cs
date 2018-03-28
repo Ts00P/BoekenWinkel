@@ -116,6 +116,14 @@ namespace BoekenWinkel
             }
             return false;
         }
+        private bool IsTijdschrift2(Product product)
+        {
+            if (product.GetType() == typeof(Tijdschrift))
+            {
+                return true;
+            }
+            return false;
+        }
 
     }
 }
