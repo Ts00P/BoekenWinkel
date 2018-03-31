@@ -31,9 +31,5 @@ namespace BoekenWinkel
         public int Gewicht { get => gewicht; set => gewicht = value; }
         public decimal Prijs { get => prijs; set => prijs = value; }
         public int Voorraad { get => voorraad; set => voorraad = value; }
-
-        public enum taal
-        {
-        }
     }
 }

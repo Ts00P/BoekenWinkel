@@ -13,10 +13,11 @@ namespace BoekenWinkel
         private int minVoorraad;
         private int maxVoorraad;
 
-        protected Boek(string druk, string iSBN, int minVoorraad, int maxVoorraad, string titel, string auteur, Afmeting afmeting, int gewicht, decimal prijs) : base(titel, auteur, afmeting, gewicht, prijs)
+        public Boek(string druk, string ISBN, int minVoorraad, int maxVoorraad, string titel, string auteur, Afmeting afmeting, int gewicht, decimal prijs, int voorraad) 
+            : base(titel, auteur, afmeting, gewicht, prijs, voorraad)
         {
             this.druk = druk;
-            ISBN = iSBN;
+            this.ISBN = ISBN;
             this.minVoorraad = minVoorraad;
             this.maxVoorraad = maxVoorraad;
         }
@@ -25,5 +26,48 @@ namespace BoekenWinkel
         public string ISBN1 { get => ISBN; set => ISBN = value; }
         public int MinVoorraad { get => minVoorraad; set => minVoorraad = value; }
         public int MaxVoorraad { get => maxVoorraad; set => maxVoorraad = value; }
+
+        public string Afdrukken()
+        {
+            var stringBuilder = new StringBuilder();
+            stringBuilder.Append("Boek: ")
+                .Append(Titel)
+                .AppendLine()
+                .Append("   Auteur: ")
+                .Append(Auteur)
+                .Append(", Prijs: ")
+                .Append(Prijs)
+                .Append(", Druk: ")
+                .Append(Druk)
+                .Append(", ISBN: ")
+                .Append(ISBN1)
+                .AppendLine()
+                .Append("   ")
+                .Append(Afmeting.ToString())
+                .Append(", Gewicht: ")
+                .Append(Gewicht)
+                .AppendLine()
+                .Append("   Voorraad: ")
+                .Append(Voorraad)
+                .Append(", MinVoorraad: ")
+                .Append(MinVoorraad)
+                .Append(", MaxVoorraad: ")
+                .Append(MaxVoorraad);
+            return stringBuilder.ToString();
+        }
+
+        public string BestelRegel()
+        {
+            var stringBuilder = new StringBuilder();
+                stringBuilder.Append("   Titel: ")
+                .Append(Titel)
+                .Append(", Auteur: ")
+                .Append(Auteur)
+                .Append(", ISBN: ")
+                .Append(ISBN1)
+                .Append(", Aantal: ")
+                .Append(MaxVoorraad - Voorraad);
+            return stringBuilder.ToString();
+        }
     }
 }
