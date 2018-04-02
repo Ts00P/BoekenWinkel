@@ -184,11 +184,34 @@ namespace BoekenWinkel
         ///     Verwijderd een product uit de voorraad.
         /// </summary>
         /// <param name="id"></param>
-        public void VerwijderProduct(string id)
+        public string VerwijderProduct(string id)
         {
             var product = ZoekProduct(id);
 
-            Voorraad.Remove(product);
+            var stringBuilder = new StringBuilder();
+
+            if (product != null)
+            {
+                Voorraad.Remove(product);
+                stringBuilder.AppendLine("Het volgende product is verwijderd:");
+                
+                if (IsBoek(product))
+                {
+                    var boek = (Boek)product;
+                    stringBuilder.AppendLine(boek.Afdrukken());
+                }
+                else
+                {
+                    var tijdschrift = (Tijdschrift)product;
+                    stringBuilder.AppendLine(tijdschrift.Afdrukken());
+                }
+                return stringBuilder.ToString(); 
+            }
+            else
+            {
+                return "Er zijn geen producten gevonden met dit id.";
+            }
+           
         }
 
         /// <summary>

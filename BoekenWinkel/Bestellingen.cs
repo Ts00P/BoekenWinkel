@@ -109,8 +109,14 @@ namespace BoekenWinkel
         /// <returns></returns>
         public string LaasteBestellingAfdrukken()
         {
-            var bestelling = BestellingsLijst.Last();
-            return bestelling.BestellingAfdrukken();
+            if (BestellingsLijst.Count > 0)
+            {
+                return BestellingsLijst.Last().BestellingAfdrukken();
+            }
+            else
+            {
+                return "Er zijn geen bestellingen gevonden.";
+            }
         }
     }
 }

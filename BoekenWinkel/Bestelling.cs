@@ -34,7 +34,7 @@ namespace BoekenWinkel
         }
 
         /// <summary>
-        ///     Een overzicht van de bestelling.
+        ///    Een overzicht van een bestel
         /// </summary>
         /// <returns></returns>
         public string BestellingAfdrukken()
