@@ -141,13 +141,14 @@ namespace BoekenWinkel
         public string ToonBoekVoorraad()
         {
             var stringBuilder = new StringBuilder();
-            stringBuilder.Append("Voorradige Boeken: ");
+            stringBuilder.AppendLine("Voorradige Boeken: ");
             foreach(var product in Voorraad)
             {
                 if (IsBoek(product))
                 {
                     var boek = (Boek)product;
                     if (boek.Voorraad >= boek.MinVoorraad){
+                        stringBuilder.Append("  ");
                         stringBuilder.AppendLine(boek.Afdrukken());
                     }
                 }
