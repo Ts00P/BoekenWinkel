@@ -55,6 +55,23 @@ namespace BoekenWinkel
             return null;
         }
 
+        public string BestellingAfgehandeld()
+        {
+            if (bestellingen.BestellingsLijst.Count() > 0)
+            {
+                foreach (var item in bestellingen.BestellingsLijst)
+                {
+                    item.Afgehandeld = true;
+                }
+
+                return "Bestellingen zijn afgehandeld.";
+            }
+            else
+            {
+                return "Er zijn geen open bestellingen.";
+            }
+        }
+
         /// <summary>
         ///     Berekent de nieuwe voorraad met het aantal verkochte tijdschriften.
         /// </summary>
@@ -270,7 +287,13 @@ namespace BoekenWinkel
         public string NietVerwerkteBestellingen()
         {
             var stringBuilder = new StringBuilder();
-            stringBuilder.Append("Open bestellingen: ");
+            stringBuilder.AppendLine("Open bestellingen: ");
+
+            if (Bestellingen.BestellingsLijst.Count == 0)
+            {
+                stringBuilder.AppendLine("Er zijn geen open bestellingen.");
+                return stringBuilder.ToString();
+            }
 
             foreach (var bestelling in Bestellingen.BestellingsLijst)
             {
